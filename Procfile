@@ -1,1 +1,1 @@
-worker: node YAXI.js
+worker: node Yaxi.js
