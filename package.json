@@ -1,11 +1,11 @@
 
 {
-  "name": "YAXI",
+  "name": "Yaxi",
   "version": "0.0.1",
   "description": "Hyper staff",
-  "main": "YAXI.js",
+  "main": "Yaxi.js",
   "scripts": {
-    "start": "node YAXI.js"
+    "start": "node Yaxi.js"
   },
   "dependencies": {
     "express": "^4.17.1",
