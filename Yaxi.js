@@ -25,7 +25,7 @@ const YAXI = new Discord.Client();
 const prefix = "Y!";
 
 
-YAXI.login("ODAyODg5ODM0MzkzMjM5NTUy.YA1zbQ.Kj23P0ZxrTs8fmmrGr-2fnC3PHs");
+YAXI.login("ODAyODg5ODM0MzkzMjM5NTUy.YA1zbQ.GJTTd02-aWqF8ZDAhhyZPcAaAvM");
 YAXI.on("ready", async () => {
   console.log(`Logged in as ${YAXI.user.username}!`);
   YAXI.user.setStatus("ONLINE");
