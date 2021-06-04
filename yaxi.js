@@ -1,48 +1,4 @@
-const express = require("express");
-const app = express();
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-app.use(express.static("public"));
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
-});
-app.get("/dreams", (request, response) => {
-  response.json(dreams);
-});
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
 
-
-
-const fs = require("fs");
-const Discord = require ("discord.js")
-const moment = require ("moment")
-const YAXI = new Discord.Client();
-const prefix = "Y!";
-
-
-YAXI.login("ODUwNDUwMTg0OTYxMzkyNjUy.YLp5dA.rJ6PSyOXj1EW87UcDmCCX9BsDX0");
-YAXI.on("ready", async () => {
-  console.log(`Logged in as ${YAXI.user.username}!`);
-  YAXI.user.setStatus("ONLINE");
-  YAXI.user.setActivity(`Y!help`, { type: "WATCHING" });
-  YAXI.guilds.cache.forEach(g => {
-    if (g.member(YAXI.user).hasPermission("ADMINISTRATOR")) {
-      g.fetchInvites().then(guildInvites => {});
-    }
-  });
-});
-////////
-
-YAXI.on("message", message => {
-  if (message.content === prefix + "about") {
-    const embed = new Discord.MessageEmbed()
-    .setDescription(`                         
-**[ invite ]**
 **[ click here ](https://discord.com/api/oauth2/authorize?client_id=802889834393239552&permissions=8&scope=bot)** 
 **[ support ]**
 **[ click here ](https://discord.gg/K3s4Gv76jd)**`)
@@ -97,18 +53,15 @@ YAXI.on("ready", () => {
   }); 
 });
 ///////////////////
-YAXI.on("guildMemberAdd", member => {
+YAXI.on(", member => {
   member.guild.fetchInvites().then(guildInvites => {
     const gamer = invites[member.guild.id];
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
     const inviter = YAXI.users.cache.get(invite.inviter.id);
     const channel = member.guild.channels.cache.find(
-      channel => channel.name === "invite" 
-    );
+      => channel.name === "invite" 
+    )
     channel.send(
-      `__**<@${member.id}> **|invite kra la layan** | <@${inviter.id}> | **Zhmaray henan** |${invite.uses}**__`
-    );
-  });
+      `__**<@${member.id}> **|invite kra la layan** | <@${inviter.id}> | **Zhma
 });
-
