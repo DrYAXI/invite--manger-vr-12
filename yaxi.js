@@ -21,24 +21,24 @@ const listener = app.listen(process.env.PORT, () => {
 const fs = require("fs");
 const Discord = require ("discord.js")
 const moment = require ("moment")
-const YAXI = new Discord.Client();
+const yaxi = new Discord.Client();
 const prefix = "Y!";
 
 
-YAXI.login("NzYxMjcwNTE5MzkwNTM1NzEy.X3YKaw.SMHXwYi1u1E_TzyD8LmAFrAFaUU");
-YAXI.on("ready", async () => {
-  console.log(`Logged in as ${YAXI.user.username}!`);
-  YAXI.user.setStatus("ONLINE");
-  YAXI.user.setActivity(`Y!help`, { type: "WATCHING" });
-  YAXI.guilds.cache.forEach(g => {
-    if (g.member(YAXI.user).hasPermission("ADMINISTRATOR")) {
+yaxi.login("NzYxMjcwNTE5MzkwNTM1NzEy.X3YKaw.SMHXwYi1u1E_TzyD8LmAFrAFaUU");
+yaxi.on("ready", async () => {
+  console.log(`Logged in as ${yaxi.user.username}!`);
+  yaxi.user.setStatus("ONLINE");
+  yaxi.user.setActivity(`Y!help`, { type: "WATCHING" });
+  yaxi.guilds.cache.forEach(g => {
+    if (g.member(yaxi.user).hasPermission("ADMINISTRATOR")) {
       g.fetchInvites().then(guildInvites => {});
     }
   });
 });
 ////////
 
-YAXI.on("message", message => {
+yaxi.on("message", message => {
   if (message.content === prefix + "about") {
     const embed = new Discord.MessageEmbed()
     .setDescription(`                         
@@ -48,11 +48,11 @@ YAXI.on("message", message => {
 **[ click here ](https://discord.gg/K3s4Gv76jd)**`)
       .setColor("BLACK")
     
-      .addField("`my name`", `** ${YAXI.user.tag} **`, true)
+      .addField("`my name`", `** ${yaxi.user.tag} **`, true)
 
-      .addField("`Server`", `**${YAXI.guilds.cache.size} Server**`, true)
+      .addField("`Server`", `**${yaxi.guilds.cache.size} Server**`, true)
     
-     .addField("`Usres`",  `**${YAXI.users.cache.size}  Users**`, true)
+     .addField("`Usres`",  `**${yaxi.users.cache.size}  Users**`, true)
     
     
      .addField( "`developer bot` ",`<@711293222852362290>`,true)
@@ -68,7 +68,7 @@ YAXI.on("message", message => {
 
 //////////
 
-YAXI.on("message", message => {
+yaxi.on("message", message => {
   if (message.content === prefix + "invite") {
     if (!message.channel.guild)
       return message.reply(
@@ -88,21 +88,21 @@ YAXI.on("message", message => {
 ////// code invite vr 12 by yaxi///////
 const invites = {};
 const wait = require("util").promisify(setTimeout);
-YAXI.on("ready", () => {
+yaxi.on("ready", () => {
   wait(1000);
-  YAXI.guilds.cache.forEach(g => {
+  yaxi.guilds.cache.forEach(g => {
     g.fetchInvites().then(guildInvites => {
       invites[g.id] = guildInvites;
     });
   }); 
 });
 ///////////////////
-YAXI.on("guildMemberAdd", member => {
+yaxi.on("guildMemberAdd", member => {
   member.guild.fetchInvites().then(guildInvites => {
     const gamer = invites[member.guild.id];
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => gamer.get(i.code).uses < i.uses);
-    const inviter = YAXI.users.cache.get(invite.inviter.id);
+    const inviter = yaxi.users.cache.get(invite.inviter.id);
     const channel = member.guild.channels.cache.find(
       channel => channel.name === "invite" 
     );
